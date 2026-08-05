@@ -2,8 +2,33 @@
 
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
+import type { CSSProperties } from "react";
 
 const weddingDate = new Date("2026-09-13T04:30:00+05:30").getTime();
+const petals = [
+  [7, 17, 0, 18, 0.42], [16, 22, 7, 14, 0.28], [25, 19, 12, 20, 0.36],
+  [34, 25, 3, 13, 0.3], [43, 18, 15, 17, 0.38], [52, 23, 9, 12, 0.25],
+  [61, 20, 5, 19, 0.4], [70, 26, 14, 14, 0.27], [78, 21, 1, 18, 0.34],
+  [87, 24, 10, 13, 0.3], [94, 19, 6, 17, 0.38], [12, 27, 16, 12, 0.24],
+  [48, 28, 19, 15, 0.26], [82, 29, 21, 12, 0.22],
+] as const;
+
+function WeddingAtmosphere() {
+  return (
+    <div className="wedding-atmosphere" aria-hidden="true">
+      <div className="ambient-orb ambient-orb-one" />
+      <div className="ambient-orb ambient-orb-two" />
+      <div className="ambient-orb ambient-orb-three" />
+      {petals.map(([left, duration, delay, size, opacity], index) => (
+        <span
+          key={index}
+          className={`wedding-petal ${index % 4 === 0 ? "wedding-petal-gold" : index % 3 === 0 ? "wedding-sparkle" : ""}`}
+          style={{ "--petal-left": `${left}%`, "--petal-duration": `${duration}s`, "--petal-delay": `-${delay}s`, "--petal-size": `${size}px`, "--petal-opacity": opacity } as CSSProperties}
+        />
+      ))}
+    </div>
+  );
+}
 
 function useCountdown() {
   const [now, setNow] = useState(() => Date.now());
@@ -42,7 +67,8 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="overflow-clip bg-ivory text-ink selection:bg-gold/25">
+    <main className="wedding-gradient overflow-clip text-ink selection:bg-gold/25">
+      <WeddingAtmosphere />
       <header className="absolute inset-x-0 top-0 z-30 flex items-center justify-between px-5 py-6 sm:px-10 lg:px-16">
         <a href="#home" className="font-serif text-sm tracking-[0.35em] text-gold" aria-label="Yogesh and Suganya home">Y · S</a>
         <nav className="hidden items-center gap-8 text-[11px] font-medium uppercase tracking-[0.18em] text-ink/60 sm:flex" aria-label="Main navigation">

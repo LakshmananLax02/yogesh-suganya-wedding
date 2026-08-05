@@ -17,6 +17,26 @@ html { background: #f8f4ea; }
 body { margin: 0; background: #f8f4ea; color: #29251f; font-family: var(--font-wedding-sans), sans-serif; }
 a { text-decoration: none; }
 
+.wedding-gradient {
+  background: linear-gradient(122deg, #f8f4ea 0%, #f4e9df 26%, #fbf6e9 54%, #edf2e9 78%, #f8f4ea 100%);
+  background-size: 320% 320%;
+  animation: wedding-gradient-drift 22s ease-in-out infinite;
+}
+.wedding-atmosphere { position: fixed; inset: 0; z-index: 40; overflow: hidden; pointer-events: none; }
+.ambient-orb { position: absolute; border-radius: 999px; filter: blur(80px); opacity: .18; animation: orb-drift 16s ease-in-out infinite alternate; }
+.ambient-orb-one { width: 28rem; height: 28rem; left: -12rem; top: -10rem; background: #d5b172; }
+.ambient-orb-two { width: 34rem; height: 34rem; right: -17rem; top: 24%; background: #d9ada0; animation-delay: -6s; animation-duration: 20s; }
+.ambient-orb-three { width: 24rem; height: 24rem; left: 32%; bottom: -14rem; background: #b9cbbf; animation-delay: -11s; animation-duration: 18s; }
+.wedding-petal {
+  --petal-left: 50%; --petal-duration: 22s; --petal-delay: 0s; --petal-size: 15px; --petal-opacity: .3;
+  position: absolute; left: var(--petal-left); bottom: -60px; width: var(--petal-size); height: calc(var(--petal-size) * 1.55);
+  border-radius: 90% 10% 80% 20%; background: linear-gradient(145deg, rgba(255,255,255,.95), rgba(229,202,183,.72));
+  box-shadow: 0 3px 12px rgba(86,58,35,.1); opacity: var(--petal-opacity);
+  animation: petal-rise var(--petal-duration) linear var(--petal-delay) infinite;
+}
+.wedding-petal-gold { background: linear-gradient(145deg, rgba(222,190,126,.9), rgba(167,122,57,.58)); }
+.wedding-sparkle { width: 5px; height: 5px; border-radius: 50%; background: #d5b172; box-shadow: 0 0 12px rgba(213,177,114,.7); }
+
 .eyebrow { font-size: 10px; font-weight: 600; letter-spacing: .34em; text-transform: uppercase; color: #a77a39; }
 .hero-in { opacity: 0; transform: translateY(30px); animation: hero-enter 1s cubic-bezier(.22,1,.36,1) forwards; }
 .hero-in:nth-child(2) { animation-delay: .12s; }
@@ -33,6 +53,15 @@ a { text-decoration: none; }
 @keyframes portrait-enter { to { opacity: 1; transform: translateY(0) scale(1); } }
 @keyframes couple-breathe { from { transform: scale(1.015) translate3d(0,0,0); } to { transform: scale(1.075) translate3d(-.8%,-1.2%,0); } }
 @keyframes portrait-light { 0%,24% { transform: translateX(-140%); opacity: 0; } 38% { opacity: 1; } 55%,100% { transform: translateX(140%); opacity: 0; } }
+@keyframes wedding-gradient-drift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+@keyframes orb-drift { from { transform: translate3d(0,0,0) scale(.94); } to { transform: translate3d(45px,35px,0) scale(1.08); } }
+@keyframes petal-rise {
+  0% { transform: translate3d(0,0,0) rotate(0deg); opacity: 0; }
+  8% { opacity: var(--petal-opacity); }
+  50% { transform: translate3d(48px,-55vh,0) rotate(190deg); }
+  92% { opacity: var(--petal-opacity); }
+  100% { transform: translate3d(-28px,-115vh,0) rotate(390deg); opacity: 0; }
+}
 @keyframes scroll-line { 0%,100% { transform: scaleY(.35); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } }
 .animate-scroll { animation: scroll-line 1.9s ease-in-out infinite; }
 
@@ -40,5 +69,7 @@ a { text-decoration: none; }
   html { scroll-behavior: auto; }
   .hero-in, .hero-portrait, .couple-image, .portrait-shine, .reveal { animation: none; transition: none; opacity: 1; transform: none; }
   .portrait-float { transform: none !important; transition: none; }
+  .wedding-gradient, .ambient-orb, .wedding-petal { animation: none; }
+  .wedding-petal { display: none; }
   .animate-scroll { animation: none; }
 }
