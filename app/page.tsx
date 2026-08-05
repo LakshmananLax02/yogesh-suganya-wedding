@@ -97,7 +97,7 @@ export default function Home() {
         <div className="portrait-float relative mx-auto mt-2 w-full max-w-[560px] lg:mt-0" style={{ transform: `translate3d(0, ${Math.min(scrollY * 0.045, 28)}px, 0)` }}>
           <div className="absolute -inset-3 translate-x-3 translate-y-3 rounded-t-[48%] border border-gold/35" />
           <div className="hero-portrait relative aspect-[3/4] overflow-hidden rounded-t-[48%] bg-sand">
-            <Image src="/couple-animated.png" alt="An animated illustration of a fictional South Indian wedding couple" fill priority sizes="(max-width: 1024px) 100vw, 46vw" className="couple-image object-cover object-center" />
+            <Image src="/couple-cartoon.png" alt="A cartoon-style animated South Indian wedding couple" fill priority sizes="(max-width: 1024px) 100vw, 46vw" className="couple-image object-cover object-center" />
             <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-green/35 to-transparent" />
             <div className="portrait-shine absolute inset-0" aria-hidden="true" />
           </div>
