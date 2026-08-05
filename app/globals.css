@@ -23,16 +23,22 @@ a { text-decoration: none; }
 .hero-in:nth-child(3) { animation-delay: .32s; }
 .hero-in:nth-child(4) { animation-delay: .45s; }
 .hero-portrait { opacity: 0; transform: translateY(38px) scale(.97); animation: portrait-enter 1.25s .25s cubic-bezier(.22,1,.36,1) forwards; }
+.portrait-float { will-change: transform; transition: transform .12s linear; }
+.couple-image { animation: couple-breathe 11s ease-in-out 1.5s infinite alternate; will-change: transform; }
+.portrait-shine { background: linear-gradient(112deg, transparent 28%, rgba(255,255,255,.2) 44%, transparent 59%); transform: translateX(-140%); animation: portrait-light 7s ease-in-out 2.3s infinite; mix-blend-mode: soft-light; }
 .reveal { opacity: 0; transform: translateY(55px); transition: opacity .95s cubic-bezier(.22,1,.36,1), transform .95s cubic-bezier(.22,1,.36,1); }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 @keyframes hero-enter { to { opacity: 1; transform: translateY(0); } }
 @keyframes portrait-enter { to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes couple-breathe { from { transform: scale(1.015) translate3d(0,0,0); } to { transform: scale(1.075) translate3d(-.8%,-1.2%,0); } }
+@keyframes portrait-light { 0%,24% { transform: translateX(-140%); opacity: 0; } 38% { opacity: 1; } 55%,100% { transform: translateX(140%); opacity: 0; } }
 @keyframes scroll-line { 0%,100% { transform: scaleY(.35); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } }
 .animate-scroll { animation: scroll-line 1.9s ease-in-out infinite; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .hero-in, .hero-portrait, .reveal { animation: none; transition: none; opacity: 1; transform: none; }
+  .hero-in, .hero-portrait, .couple-image, .portrait-shine, .reveal { animation: none; transition: none; opacity: 1; transform: none; }
+  .portrait-float { transform: none !important; transition: none; }
   .animate-scroll { animation: none; }
 }

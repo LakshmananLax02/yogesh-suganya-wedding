@@ -68,11 +68,12 @@ export default function Home() {
           <p className="hero-in mt-8 max-w-xl text-sm leading-7 text-ink/60 sm:text-base">Joyfully invite you to celebrate their wedding and bless them as they begin their beautiful journey together.</p>
         </div>
 
-        <div className="relative mx-auto mt-2 w-full max-w-[560px] lg:mt-0">
+        <div className="portrait-float relative mx-auto mt-2 w-full max-w-[560px] lg:mt-0" style={{ transform: `translate3d(0, ${Math.min(scrollY * 0.045, 28)}px, 0)` }}>
           <div className="absolute -inset-3 translate-x-3 translate-y-3 rounded-t-[48%] border border-gold/35" />
           <div className="hero-portrait relative aspect-[3/4] overflow-hidden rounded-t-[48%] bg-sand">
-            <Image src="/couple-hero.png" alt="A fictional AI-generated South Indian wedding couple" fill priority sizes="(max-width: 1024px) 100vw, 46vw" className="object-cover object-center" />
+            <Image src="/couple-hero.png" alt="A fictional AI-generated South Indian wedding couple" fill priority sizes="(max-width: 1024px) 100vw, 46vw" className="couple-image object-cover object-center" />
             <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-green/35 to-transparent" />
+            <div className="portrait-shine absolute inset-0" aria-hidden="true" />
           </div>
           <div className="absolute -bottom-7 -left-3 hidden h-28 w-px bg-gold/55 sm:block" />
           <p className="absolute -bottom-8 left-5 text-[9px] uppercase tracking-[0.28em] text-ink/45">A new chapter begins</p>
