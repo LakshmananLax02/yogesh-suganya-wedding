@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import "tailwindcss/index.css";
 
 @theme inline {
   --color-ivory: #f8f4ea;
