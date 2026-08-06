@@ -23,6 +23,7 @@ a { text-decoration: none; }
   animation: wedding-gradient-drift 22s ease-in-out infinite;
 }
 .wedding-atmosphere { position: fixed; inset: 0; z-index: 40; overflow: hidden; pointer-events: none; }
+.scroll-progress { position: fixed; inset: 0 auto auto 0; z-index: 60; height: 2px; width: var(--scroll-progress, 0%); background: linear-gradient(90deg, #a77a39, #d5b172, #27473c); box-shadow: 0 0 14px rgba(167,122,57,.45); transition: width .12s linear; pointer-events: none; }
 .ambient-orb { position: absolute; border-radius: 999px; filter: blur(80px); opacity: .18; animation: orb-drift 16s ease-in-out infinite alternate; }
 .ambient-orb-one { width: 28rem; height: 28rem; left: -12rem; top: -10rem; background: #d5b172; }
 .ambient-orb-two { width: 34rem; height: 34rem; right: -17rem; top: 24%; background: #d9ada0; animation-delay: -6s; animation-duration: 20s; }
@@ -44,15 +45,22 @@ a { text-decoration: none; }
 .hero-in:nth-child(4) { animation-delay: .45s; }
 .hero-portrait { opacity: 0; transform: translateY(38px) scale(.97); animation: portrait-enter 1.25s .25s cubic-bezier(.22,1,.36,1) forwards; }
 .portrait-float { will-change: transform; transition: transform .12s linear; }
+.portrait-drift { animation: portrait-drift 5.5s 1.5s ease-in-out infinite; will-change: transform; }
 .couple-image { animation: couple-breathe 11s ease-in-out 1.5s infinite alternate; will-change: transform; }
 .portrait-shine { background: linear-gradient(112deg, transparent 28%, rgba(255,255,255,.2) 44%, transparent 59%); transform: translateX(-140%); animation: portrait-light 7s ease-in-out 2.3s infinite; mix-blend-mode: soft-light; }
 .reveal { opacity: 0; transform: translateY(55px); transition: opacity .95s cubic-bezier(.22,1,.36,1), transform .95s cubic-bezier(.22,1,.36,1); }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal.is-visible > * { animation: reveal-stagger .8s cubic-bezier(.22,1,.36,1) both; }
+.reveal.is-visible > *:nth-child(2) { animation-delay: .1s; }
+.reveal.is-visible > *:nth-child(3) { animation-delay: .18s; }
+.reveal.is-visible > *:nth-child(4) { animation-delay: .26s; }
 
 @keyframes hero-enter { to { opacity: 1; transform: translateY(0); } }
 @keyframes portrait-enter { to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes portrait-drift { 0%,100% { transform: translate3d(0,0,0) rotate(-.15deg); } 50% { transform: translate3d(0,-7px,0) rotate(.15deg); } }
 @keyframes couple-breathe { from { transform: scale(1.015) translate3d(0,0,0); } to { transform: scale(1.075) translate3d(-.8%,-1.2%,0); } }
 @keyframes portrait-light { 0%,24% { transform: translateX(-140%); opacity: 0; } 38% { opacity: 1; } 55%,100% { transform: translateX(140%); opacity: 0; } }
+@keyframes reveal-stagger { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes wedding-gradient-drift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 @keyframes orb-drift { from { transform: translate3d(0,0,0) scale(.94); } to { transform: translate3d(45px,35px,0) scale(1.08); } }
 @keyframes petal-rise {
@@ -67,7 +75,7 @@ a { text-decoration: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .hero-in, .hero-portrait, .couple-image, .portrait-shine, .reveal { animation: none; transition: none; opacity: 1; transform: none; }
+  .hero-in, .hero-portrait, .portrait-drift, .couple-image, .portrait-shine, .reveal, .reveal.is-visible > * { animation: none; transition: none; opacity: 1; transform: none; }
   .portrait-float { transform: none !important; transition: none; }
   .wedding-gradient, .ambient-orb, .wedding-petal { animation: none; }
   .wedding-petal { display: none; }
