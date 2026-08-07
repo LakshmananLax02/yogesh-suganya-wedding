@@ -148,7 +148,7 @@ export default function Home() {
             </article>
             <article className="group relative border-t border-ivory/15 py-5 sm:py-12 md:border-t-0 md:pl-14">
               <p className="text-[10px] uppercase tracking-[0.3em] text-gold-light">Sunday · 13 September</p>
-              <h3 className="mt-3 font-serif text-2xl transition-transform duration-500 group-hover:translate-x-2 sm:mt-8 sm:text-5xl">Subha Muhurtham</h3>
+              <h3 className="mt-3 font-serif text-2xl transition-transform duration-500 group-hover:translate-x-2 sm:mt-8 sm:text-5xl">Muhurtham</h3>
               <p className="mt-2 text-base text-ivory/80 sm:mt-6 sm:text-xl">4:30 AM — 6:00 AM</p>
               <p className="mt-2 text-xs text-ivory/45 sm:mt-3 sm:text-sm">Nithilam Mahal</p>
               <span className="absolute right-4 top-7 font-serif text-5xl text-ivory/[0.06] sm:top-11 sm:text-6xl">02</span>
